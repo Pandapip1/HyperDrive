@@ -1,4 +1,4 @@
-namespace tk.pandapip1.AmongUsRoles
+namespace tk.pandapip1.easyroles
 {
     public static class RoleApi
     {
