@@ -1,4 +1,10 @@
-namespace tk.pandapip1.easyroles
+using System;
+using System.Collections.Generic;
+using Hazel;
+using HarmonyLib;
+using BepInEx;
+
+namespace tk.pandapip1.hyperdrive
 {
     public static class RoleApi
     {
