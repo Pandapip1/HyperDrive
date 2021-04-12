@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace tk.pandapip1.easyroles
+namespace tk.pandapip1.hyperdrive
 {
     public class CooldownButton
     {
