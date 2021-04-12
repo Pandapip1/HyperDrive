@@ -26,7 +26,7 @@ namespace tk.pandapip1.easyroles
 
         public override void Load()
         {
-            // Initialize Loggr
+            // Initialize Logger
             BepInEx.Logging.Logger.Sources.Add(Logger);
             // Initialize Default Roles
             RoleApi.CreateTeam("Crewmate");
