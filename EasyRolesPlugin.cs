@@ -11,18 +11,18 @@ using Reactor;
 using UnhollowerBaseLib;
 using UnityEngine;
 
-namespace tk.pandapip1.easyroles
+namespace tk.pandapip1.hyperdrive
 {
     [BepInPlugin(Id)]
     [BepInProcess("Among Us.exe")]
     [BepInDependency(ReactorPlugin.Id)]
-    public class EasyRolesPlugin : BasePlugin
+    public class HyperDrivePlugin : BasePlugin
     {
         private const string Id = "tk.pandapip1.easyroles";
 
         private Harmony Harmony { get; } = new Harmony(Id);
 
-        internal static ManualLogSource Logger = new ManualLogSource("EasyRoles");
+        internal static ManualLogSource Logger = new ManualLogSource("HyperDrive");
 
         public override void Load()
         {
