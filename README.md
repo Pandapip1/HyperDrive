@@ -1,3 +1,3 @@
-# EasyRoles
+# HyperDrive
 
-Simple Among Us role API.
+Useful utilities for Among Us mods (WIP)
