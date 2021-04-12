@@ -28,12 +28,21 @@ namespace tk.pandapip1.easyroles
         {
             // Initialize Logger
             BepInEx.Logging.Logger.Sources.Add(Logger);
+            // Initialize Default Teams
+            RoleApi.CreateTeam("com.innersloth.spacemafia.crewmate");
+            RoleApi.CreateTeam("com.innersloth.spacemafia.impostor");
+            RoleApi.CreateTeam("com.innersloth.spacemafia.individual");
             // Initialize Default Roles
-            RoleApi.CreateTeam("Crewmate");
-            RoleApi.CreateTeam("Impostor");
-            RoleApi.CreateTeam("Individual");
-            RoleApi.CreateRole("Crewmate");
-            RoleApi.CreateRole("Impostor");
+            RoleApi.CreateRole("com.innersloth.spacemafia.crewmate");
+            RoleApi.CreateRole("com.innersloth.spacemafia.impostor");
+            // Default Role Teams
+            RoleApi.AssignRoleToTeam("com.innersloth.spacemafia.crewmate", "com.innersloth.spacemafia.crewmate");
+            RoleApi.AssignRoleToTeam("com.innersloth.spacemafia.impostor", "com.innersloth.spacemafia.impostor");
+            // Default Role Properties
+            RoleApi.SetIntroCutscene("com.innersloth.spacemafia.crewmate", "Crewmate", "Do your tasks or eject the impostors", Palette.CrewmateBlue, Palette.CrewmateBlue);
+            RoleApi.SetIntroCutscene("com.innersloth.spacemafia.impostor", "Impostor", "Destroy the crewmates", Palette.ImpostorRed, Palette.ImpostorRed);
+            RoleApi.SetRoleCanKill("com.innersloth.spacemafia.impostor", true);
+            RoleApi.SetRoleColorAndBroadcast("com.innersloth.spacemafia.impostor", Palette.ImpostorRed, false);
             // Patch
             Harmony.PatchAll();
         }
