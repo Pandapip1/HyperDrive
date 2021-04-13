@@ -8,9 +8,9 @@ namespace tk.pandapip1.hyperdrive
 {
     public static class RoleApi
     {
-        private static List<string> Roles = new List<string>();
-        private static Dictionary<byte, string> Pid2Role = new List<string>();
-        private static Dictionary<byte, string> Role2Team = new List<string>();
+        internal static List<string> Roles = new List<string>();
+        internal static Dictionary<byte, string> Pid2Role = new List<string>();
+        internal static Dictionary<byte, string> Role2Team = new List<string>();
         
         public static void CreateRole(string guid)
         {
