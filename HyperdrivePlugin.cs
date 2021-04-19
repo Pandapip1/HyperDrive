@@ -21,29 +21,33 @@ namespace tk.pandapip1.hyperdrive
         private const string Id = "tk.pandapip1.easyroles";
 
         private Harmony Harmony { get; } = new Harmony(Id);
+        
+        internal string DefaultRole = "tk.pandapip1.hyperdrive.crewmate";
 
         internal static ManualLogSource Logger = new ManualLogSource("HyperDrive");
 
         public override void Load()
         {
-            // Initialize Logger
             BepInEx.Logging.Logger.Sources.Add(Logger);
-            // Initialize Default Teams
-            RoleApi.CreateTeam("com.innersloth.spacemafia.crewmate");
-            RoleApi.CreateTeam("com.innersloth.spacemafia.impostor");
-            RoleApi.CreateTeam("com.innersloth.spacemafia.individual");
-            // Initialize Default Roles
-            RoleApi.CreateRole("com.innersloth.spacemafia.crewmate");
-            RoleApi.CreateRole("com.innersloth.spacemafia.impostor");
-            // Default Role Teams
-            RoleApi.AssignRoleToTeam("com.innersloth.spacemafia.crewmate", "com.innersloth.spacemafia.crewmate");
-            RoleApi.AssignRoleToTeam("com.innersloth.spacemafia.impostor", "com.innersloth.spacemafia.impostor");
-            // Default Role Properties
-            RoleApi.SetIntroCutscene("com.innersloth.spacemafia.crewmate", "Crewmate", "Do your tasks or eject the impostors", Palette.CrewmateBlue, Palette.CrewmateBlue);
-            RoleApi.SetIntroCutscene("com.innersloth.spacemafia.impostor", "Impostor", "Destroy the crewmates", Palette.ImpostorRed, Palette.ImpostorRed);
-            RoleApi.SetRoleCanKill("com.innersloth.spacemafia.impostor", true);
-            RoleApi.SetRoleColorAndBroadcast("com.innersloth.spacemafia.impostor", Palette.ImpostorRed, false);
-            // Patch
+
+            HyperDrive.CreateRole("tk.pandapip1.hyperdrive.crewmate");
+            HyperDrive.CreateRole("tk.pandapip1.hyperdrive.impostor");
+            HyperDrive.CreateRole("tk.pandapip1.hyperdrive.individual");
+
+            HyperDrive.SetName("tk.pandapip1.hyperdrive.crewmate", "Crewmate");
+            HyperDrive.SetName("tk.pandapip1.hyperdrive.impostor", "Impostor");
+            
+            HyperDrive.SetDesc("tk.pandapip1.hyperdrive.crewmate", "Do your tasks");
+            HyperDrive.SetDesc("tk.pandapip1.hyperdrive.impostor", "Kill the crewmates");
+            
+            HyperDrive.SetColor("tk.pandapip1.hyperdrive.crewmate", Color.White);
+            HyperDrive.SetColor("tk.pandapip1.hyperdrive.impostor", Palette.ImpostorRed);
+            
+            HyperDrive.SetICColor("tk.pandapip1.hyperdrive.crewmate", Color.CrewmateBlue);
+            
+            HyperDrive.SetCanSabotage("tk.pandapip1.hyperdrive.impostor", true);
+            HyperDrive.SetCanKill("tk.pandapip1.hyperdrive.impostor", true);
+            
             Harmony.PatchAll();
         }
     }
