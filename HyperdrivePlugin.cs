@@ -49,7 +49,7 @@ namespace tk.pandapip1.hyperdrive
             HyperDrive.SetCanKill("tk.pandapip1.hyperdrive.impostor", true);
             
             HyperDrive.SetChoosable("tk.pandapip1.hyperdrive.crewmate", false);
-            HyperDrive.SetChoosable("tk.pandapip1.hyperdrive.individual", false);
+            HyperDrive.SetInternal("tk.pandapip1.hyperdrive.individual", true);
             
             Harmony.PatchAll();
         }
