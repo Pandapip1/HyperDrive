@@ -15,12 +15,12 @@ namespace tk.pandapip1.hyperdrive
     {
         public static bool Prefix([HarmonyArgument(0)] byte callId, [HarmonyArgument(1)] MessageReader reader)
         {
-            if (callId == 69)
+            if (callId == 255)
             {
                 switch ((HyperdriveRPC) reader.ReadInt32())
                 {
                     case HyperdriveRPC.SetUserRole:
-                        RoleApi.Pid2Role[reader.ReadString()] = reader.ReadByte();
+                        RoleManager.Pid2Role[reader.ReadByte()] = reader.ReadString();
                         break;
                 }
             }
