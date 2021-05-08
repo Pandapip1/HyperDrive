@@ -17,7 +17,7 @@ namespace tk.pandapip1.hyperdrive.patches
                 switch ((HyperdriveRPC) reader.ReadInt32())
                 {
                     case HyperdriveRPC.SetUserRole:
-                        RoleManager.Pid2Role[reader.ReadByte()] = reader.ReadString();
+                        RoleManager.internal_AssignRoleToPlayer(reader.ReadByte(), reader.ReadString());
                         break;
                 }
             }
