@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using Hazel;
 using HarmonyLib;
 using BepInEx;
+using tk.pandapip1.hyperdrive;
 
-namespace tk.pandapip1.hyperdrive
+namespace tk.pandapip1.hyperdrive.patches
 {
-    public static enum HyperdriveRPC
-    {
-        SetUserRole = 1
-    }
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
-    private static class RPCHandler
+    public static class RPCHandler
     {
         public static bool Prefix([HarmonyArgument(0)] byte callId, [HarmonyArgument(1)] MessageReader reader)
         {
