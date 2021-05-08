@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Hazel;
 using HarmonyLib;
 using BepInEx;
-using tk.pandapip1.hyperdrive;
+using HyperDrive;
+using AllOfUs.CubeAPI.Options;
 
-namespace tk.pandapip1.hyperdrive.patches
+namespace HyperDrive.Patches
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
     public static class RPCHandler
@@ -18,6 +19,9 @@ namespace tk.pandapip1.hyperdrive.patches
                 {
                     case HyperdriveRPC.SetUserRole:
                         RoleManager.internal_AssignRoleToPlayer(reader.ReadByte(), reader.ReadString());
+                        break;
+                    case HyperdriveRPC.SyncSettings:
+                        RpcSyncSettings.Handle(reader);
                         break;
                 }
             }
