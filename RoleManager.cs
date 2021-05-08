@@ -30,7 +30,7 @@ namespace tk.pandapip1.hyperdrive
         {
             internal_AssignRoleToPlayer(pid, role);
             var messageWriter = AmongUsClient.Instance.StartRpc(PlayerControl.LocalPlayer.NetId, 69, SendOption.Reliable);
-            messageWriter.Write((byte) RPC.AssignRoleToPlayer);
+            messageWriter.Write((int) HyperdriveRPC.SetUserRole);
             messageWriter.EndMessage();
         }
         
