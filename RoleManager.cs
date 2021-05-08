@@ -4,7 +4,7 @@ using Hazel;
 using HarmonyLib;
 using BepInEx;
 
-namespace tk.pandapip1.hyperdrive
+namespace HyperDrive
 {
     public static class RoleManager
     {
