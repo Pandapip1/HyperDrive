@@ -2,7 +2,7 @@ using Il2CppSystem.Collections.Generic;
 using HarmonyLib;
 using tk.pandapip1.hyperdrive;
 
-namespace tk.pandapip1.hyperdrive.patches
+namespace HyperDrive.Patches
 {
     [HarmonyPatch(typeof(IntroCutscene), nameof(IntroCutscene.BeginImpostor))]
     private static class IntroCutscenePatchImpostor
