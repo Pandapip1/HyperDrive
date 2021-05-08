@@ -1,4 +1,4 @@
-namespace tk.pandapip1.hyperdrive
+namespace HyperDrive
 {
     public static enum HyperdriveRPC
     {
