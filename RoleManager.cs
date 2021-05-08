@@ -6,7 +6,7 @@ using BepInEx;
 
 namespace tk.pandapip1.hyperdrive
 {
-    public static class HyperDrive
+    public static class RoleManager
     {
         internal static Dictionary<string, string> Roles = new Dictionary<string, string>();
         internal static Dictionary<byte, string> Pid2Role = new Dictionary<string, string>();
