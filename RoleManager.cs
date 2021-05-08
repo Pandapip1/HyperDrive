@@ -21,7 +21,7 @@ namespace tk.pandapip1.hyperdrive
             Roles[guid] = "";
         }
         
-        internal static void internal_AssignRoleToPlayer(byte pid, string role)
+        public static void internal_AssignRoleToPlayer(byte pid, string role)
         {
             Pid2Role[pid] = role;
         }
@@ -50,6 +50,13 @@ namespace tk.pandapip1.hyperdrive
             if (Pid2Role.ContainsKey(playerId))
                 return Pid2Role[playerId];
             return "tk.pandapip1.hyperdrive.crewmate";
+        }
+        
+        public static string GetBaseRole(string role)
+        {
+            while (Roles.ContainsKey(role) && Roles[role] != "")
+                role = Roles[role];
+            return role;
         }
     }
 }
