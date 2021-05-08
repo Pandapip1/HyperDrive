@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace tk.pandapip1.hyperdrive
+namespace HyperDrive
 {
     public static class IntroCutsceneManager
     {
