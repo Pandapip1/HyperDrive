@@ -11,18 +11,19 @@ using Reactor;
 using UnhollowerBaseLib;
 using UnityEngine;
 
-namespace tk.pandapip1.hyperdrive
+namespace HyperDrive
 {
     [BepInPlugin(Id)]
     [BepInProcess("Among Us.exe")]
     [BepInDependency(ReactorPlugin.Id)]
     public class HyperDrivePlugin : BasePlugin
     {
-        private const string Id = "tk.pandapip1.easyroles";
+        private const string Id = "HyperDrive";
 
         private Harmony Harmony { get; } = new Harmony(Id);
         
-        internal string DefaultRole = "tk.pandapip1.hyperdrive.crewmate";
+        public static readonly string CrewmateRole = "hyperdrive.crewmate";
+        public static readonly string IndividualRole = "hyperdrive.individual";
 
         internal static ManualLogSource Logger = new ManualLogSource("HyperDrive");
 
@@ -30,26 +31,24 @@ namespace tk.pandapip1.hyperdrive
         {
             BepInEx.Logging.Logger.Sources.Add(Logger);
 
-            HyperDrive.CreateRole("tk.pandapip1.hyperdrive.crewmate");
-            HyperDrive.CreateRole("tk.pandapip1.hyperdrive.impostor");
-            HyperDrive.CreateRole("tk.pandapip1.hyperdrive.individual");
+            RoleManager.CreateRole("hyperdrive.crewmate");
+            RoleManager.CreateRole("hyperdrive.impostor");
+            RoleManager.CreateRole("hyperdrive.individual");
 
-            HyperDrive.SetName("tk.pandapip1.hyperdrive.crewmate", "Crewmate");
-            HyperDrive.SetName("tk.pandapip1.hyperdrive.impostor", "Impostor");
+            IntroCutsceneManager.SetRoleTitle("hyperdrive.crewmate", "Crewmate");
+            IntroCutsceneManager.SetRoleTitle("hyperdrive.impostor", "Impostor");
+            IntroCutsceneManager.SetImpostorText("hyperdrive.crewmate", "Do your tasks");
+            IntroCutsceneManager.SetImpostorText("hyperdrive.impostor", "Kill the crewmates");
+            IntroCutsceneManager.SetBackgroundBarColor("hyperdrive.crewmate", Palette.CrewmateBlue);
+            IntroCutsceneManager.SetBackgroundBarColor("hyperdrive.impostor", Palette.ImpostorRed);
+            IntroCutsceneManager.SetTitleColor("hyperdrive.crewmate", Palette.CrewmateBlue);
+            IntroCutsceneManager.SetTitleColor("hyperdrive.impostor", Palette.ImpostorRed);
             
-            HyperDrive.SetDesc("tk.pandapip1.hyperdrive.crewmate", "Do your tasks");
-            HyperDrive.SetDesc("tk.pandapip1.hyperdrive.impostor", "Kill the crewmates");
+            AbilitiesManager.SetCanSabotage("hyperdrive.impostor", true);
+            AbilitiesManager.SetCanKill("hyperdrive.impostor", true);
             
-            HyperDrive.SetColor("tk.pandapip1.hyperdrive.crewmate", Color.White);
-            HyperDrive.SetColor("tk.pandapip1.hyperdrive.impostor", Palette.ImpostorRed);
-            
-            HyperDrive.SetICColor("tk.pandapip1.hyperdrive.crewmate", Color.CrewmateBlue);
-            
-            HyperDrive.SetCanSabotage("tk.pandapip1.hyperdrive.impostor", true);
-            HyperDrive.SetCanKill("tk.pandapip1.hyperdrive.impostor", true);
-            
-            HyperDrive.SetChoosable("tk.pandapip1.hyperdrive.crewmate", false);
-            HyperDrive.SetInternal("tk.pandapip1.hyperdrive.individual", true);
+            OptionsManager.SetChoosable("hyperdrive.crewmate", false);
+            OptionsManager.SetChoosable("hyperdrive.individual", false);
             
             Harmony.PatchAll();
         }
