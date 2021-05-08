@@ -2,6 +2,7 @@ namespace HyperDrive
 {
     public static enum HyperdriveRPC
     {
-        SetUserRole = 1
+        SetUserRole = 1,
+        SyncSettings = 2
     }
 }
