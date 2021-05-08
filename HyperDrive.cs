@@ -39,10 +39,17 @@ namespace tk.pandapip1.hyperdrive
             if (!Roles.ContainsKey(role)) return false;
             if (role == "") return true;
             while (role != ""){
-                if (Pid2Role.ContainsKey(playerId) && Pid2Role[playerId].StartsWith(role)) return true;
+                if (Pid2Role.ContainsKey(playerId) && Pid2Role[playerId] == role) return true;
                 role = Roles[role];
             }
             return false;
+        }
+        
+        public static string GetUserRole(byte playerId)
+        {
+            if (Pid2Role.ContainsKey(playerId))
+                return Pid2Role[playerId];
+            return "tk.pandapip1.hyperdrive.crewmate";
         }
     }
 }
